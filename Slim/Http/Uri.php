@@ -199,15 +199,6 @@ class Uri implements UriInterface
 
         $basePath = '';
         $virtualPath = $requestUri;
-        if (stripos($requestUri, $requestScriptName) === 0) {
-            $basePath = $requestScriptName;
-        } elseif ($requestScriptDir !== '/' && stripos($requestUri, $requestScriptDir) === 0) {
-            $basePath = $requestScriptDir;
-        }
-
-        if ($basePath) {
-            $virtualPath = ltrim(substr($requestUri, strlen($basePath)), '/');
-        }
 
         // Query string
         $queryString = $env->get('QUERY_STRING', '');
